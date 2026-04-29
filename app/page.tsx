@@ -1,23 +1,33 @@
 import type { Metadata } from "next";
+import { ImagePackWorkflowUploader } from "../components/utility/ImagePackWorkflowUploader";
 
 export const metadata: Metadata = {
-  title: "SellerImages | Marketplace-Ready Product Image Packs",
+  title: "SellerImages | Image Pack Automation for Sellers and Creators",
   description:
-    "Check, fix, resize, and export product images for Amazon, Etsy, eBay, Shopify, and Google Shopping. Create upload-ready image packs in one workflow.",
+    "Upload once and export clean image packs for ecommerce listings, real estate listings, local business promos, creator campaigns, websites, and ads.",
   keywords: [
     "seller images",
+    "image pack generator",
+    "marketplace image automation",
     "product image resizer",
     "Amazon image checker",
     "Etsy thumbnail preview",
     "eBay photo resizer",
     "Shopify product image optimizer",
-    "marketplace image pack",
+    "real estate listing image pack",
+    "MLS image resizer",
+    "local business image pack",
+    "creator image pack",
+    "image compressor",
+    "image converter",
+    "background cleanup",
+    "thumbnail preview",
     "product photo compliance",
   ],
   openGraph: {
-    title: "SellerImages | Marketplace-Ready Product Image Packs",
+    title: "SellerImages | Image Pack Automation for Sellers and Creators",
     description:
-      "Upload product photos once and export clean, marketplace-ready image packs for Amazon, Etsy, eBay, Shopify, and Google Shopping.",
+      "Upload once, preview outputs, and export clean image folders for listings, campaigns, websites, ads, and client handoff.",
     url: "https://www.sellerimages.com",
     siteName: "SellerImages",
     type: "website",
@@ -27,77 +37,145 @@ export const metadata: Metadata = {
   },
 };
 
-const marketplaces = ["Amazon", "Etsy", "eBay", "Shopify", "Google Shopping"];
+const packTypes = [
+  "Ecommerce",
+  "Real estate",
+  "Local business",
+  "Creators",
+  "Websites",
+  "Ads",
+];
 
 const checks = [
   {
-    title: "Main image checks",
+    title: "Preflight image checks",
     description:
-      "Catch common marketplace issues like small image size, weak framing, non-white backgrounds, borders, overlays, and blurry uploads.",
+      "Catch common issues like low resolution, poor framing, risky crops, heavy files, blurry uploads, and format mismatches.",
   },
   {
-    title: "Smart crop previews",
+    title: "Pack previews",
     description:
-      "Preview how product images may appear in listing grids, search results, thumbnails, and storefront layouts before exporting.",
+      "Preview how one image can work across listings, social posts, thumbnails, websites, ads, and business promos.",
   },
   {
     title: "Batch export packs",
     description:
-      "Generate organized folders with upload-ready images for each marketplace instead of resizing and renaming files manually.",
+      "Generate organized folders with upload-ready images instead of resizing, renaming, compressing, and sorting files manually.",
   },
 ];
 
 const workflowSteps = [
   {
     step: "01",
-    title: "Upload product images",
+    title: "Upload your images",
     description:
-      "Drop in raw product photos for one item, a full listing, or a small batch of SKUs.",
+      "Add product photos, property photos, campaign assets, local business images, or creator visuals.",
   },
   {
     step: "02",
-    title: "Run marketplace checks",
+    title: "Choose an image pack",
     description:
-      "SellerImages reviews sizing, crop safety, background, format, quality, and export readiness.",
+      "Pick ecommerce, real estate, local business, creator campaign, website, ad, or custom export workflows.",
   },
   {
     step: "03",
-    title: "Fix and export",
+    title: "Preview and export",
     description:
-      "Download clean image folders for Amazon, Etsy, eBay, Shopify, Google Shopping, and social use.",
+      "Download clean image folders with resized, compressed, converted, and platform-ready files.",
   },
 ];
 
 const features = [
   {
-    title: "Amazon-ready main images",
+    title: "Ecommerce image packs",
     description:
-      "Check white background, product framing, minimum size, file format, and visual issues before uploading.",
+      "Create Amazon, Etsy, eBay, Shopify, and Google Shopping image versions from one upload.",
   },
   {
-    title: "Etsy thumbnail previews",
+    title: "Real estate listing packs",
     description:
-      "See how your first listing image may crop in grid-style layouts and avoid product cutoffs.",
+      "Prepare property images for listing galleries, website heroes, social posts, ads, and open-house promos.",
   },
   {
-    title: "Multi-platform resizing",
+    title: "Creator campaign packs",
     description:
-      "Create image versions for different marketplace requirements without opening five different tools.",
+      "Repurpose images for YouTube thumbnails, Instagram posts, TikTok covers, Pinterest pins, and X images.",
   },
   {
     title: "ZIP export workflow",
     description:
-      "Download structured image folders named by marketplace so your files are ready to upload or send.",
+      "Download structured folders so your files are ready to upload, send, save, or hand off to a client.",
   },
   {
     title: "Quality warnings",
     description:
-      "Flag blur, poor resolution, awkward crops, borders, text overlays, and compression issues.",
+      "Flag blur, poor resolution, awkward crops, borders, text overlays, compression issues, and format mismatches.",
   },
   {
     title: "AI-assisted cleanup",
     description:
-      "Use AI where it actually helps, such as background cleanup, product detection, image ordering, and issue explanations.",
+      "Use AI where it helps, such as background cleanup, image issue explanations, alt text, image ordering, and smart recommendations.",
+  },
+];
+
+const tools = [
+  {
+    title: "Image Resizer",
+    description:
+      "Resize images for listings, thumbnails, websites, social posts, ads, and custom dimensions.",
+  },
+  {
+    title: "Image Compressor",
+    description:
+      "Reduce file size for faster websites, email delivery, marketplace uploads, and client handoff.",
+  },
+  {
+    title: "Image Converter",
+    description:
+      "Convert JPG, PNG, and WebP files depending on platform, website, marketplace, or sharing needs.",
+  },
+  {
+    title: "Crop and Pad Tool",
+    description:
+      "Create square, portrait, landscape, and safe-crop versions without stretching or distorting images.",
+  },
+  {
+    title: "Background Cleanup",
+    description:
+      "Clean product, listing, and promo images where a neutral, white, or transparent background is needed.",
+  },
+  {
+    title: "Thumbnail Preview",
+    description:
+      "Preview how images may appear as listing thumbnails, social previews, cards, grids, and campaign assets.",
+  },
+];
+
+const useCases = [
+  {
+    title: "Ecommerce sellers",
+    description:
+      "Prepare listing-ready images, gallery assets, product thumbnails, and launch visuals without rebuilding each size manually.",
+  },
+  {
+    title: "Real estate teams",
+    description:
+      "Turn property photos into listing galleries, website images, social posts, open-house promos, and ad crops.",
+  },
+  {
+    title: "Local businesses",
+    description:
+      "Create images for Google Business, Yelp, Facebook, Instagram, websites, email promos, and ads.",
+  },
+  {
+    title: "Creators and marketers",
+    description:
+      "Repurpose visuals into thumbnails, posts, stories, pins, banners, covers, and campaign assets.",
+  },
+  {
+    title: "VAs and agencies",
+    description:
+      "Deliver clean client-ready image folders and QA reports instead of loose files and manual resizing work.",
   },
 ];
 
@@ -105,25 +183,25 @@ const pricingTiers = [
   {
     name: "Free",
     price: "$0",
-    description: "For checking a few images before uploading.",
+    description: "For testing images and using basic tools.",
     features: [
-      "Single-image checks",
-      "Basic marketplace guidance",
-      "Preview common image issues",
-      "Limited daily usage",
+      "Single-image previews",
+      "Basic resize and crop tools",
+      "Limited image checks",
+      "Manual downloads",
     ],
-    cta: "Start checking",
+    cta: "Start free",
     highlighted: false,
   },
   {
     name: "Starter",
     price: "$12",
-    description: "For sellers preparing new listings regularly.",
+    description: "For sellers and creators preparing image packs regularly.",
     features: [
-      "Marketplace export packs",
-      "Amazon and Etsy presets",
+      "Image pack exports",
+      "Ecommerce and creator templates",
       "ZIP downloads",
-      "Up to 50 image packs monthly",
+      "Saved export settings",
     ],
     cta: "Choose Starter",
     highlighted: true,
@@ -131,10 +209,10 @@ const pricingTiers = [
   {
     name: "Agency",
     price: "$49",
-    description: "For VAs, freelancers, and small ecommerce teams.",
+    description: "For VAs, freelancers, real estate teams, and agencies.",
     features: [
       "Batch processing",
-      "Client-ready image folders",
+      "Client-ready folders",
       "QA reports",
       "Higher monthly limits",
     ],
@@ -145,24 +223,24 @@ const pricingTiers = [
 
 const faqs = [
   {
-    question: "Is SellerImages an AI image generator?",
+    question: "Is SellerImages just another image resizer?",
     answer:
-      "Not mainly. The product is designed as a marketplace image workflow tool. AI helps with cleanup and analysis, but the core value is checking, fixing, resizing, organizing, and exporting seller-ready images.",
+      "No. Resizing, compression, conversion, and cropping are useful secondary tools. The main product is image pack automation: upload once, choose a workflow, preview the outputs, and export organized files.",
   },
   {
     question: "Who is this for?",
     answer:
-      "It is for Amazon sellers, Etsy shop owners, eBay sellers, Shopify store owners, virtual assistants, freelancers, and ecommerce agencies that prepare product images repeatedly.",
+      "It is for ecommerce sellers, real estate agents, property managers, creators, local businesses, virtual assistants, freelancers, and agencies that prepare images repeatedly.",
   },
   {
     question: "What problem does it solve?",
     answer:
-      "It reduces the manual work of checking marketplace rules, resizing files, previewing crops, cleaning backgrounds, and creating separate upload-ready folders for each platform.",
+      "It reduces the manual work of resizing files, checking image requirements, previewing crops, compressing images, renaming files, and creating separate upload-ready folders.",
   },
   {
-    question: "Will it replace Canva or Adobe?",
+    question: "Where should AI be used?",
     answer:
-      "No. Canva and Adobe are broad creative tools. SellerImages is focused on seller-specific image preparation, compliance checks, batch exports, and marketplace workflow speed.",
+      "AI should support the workflow, not dominate it. Useful AI features include background cleanup, image issue explanations, alt text, image ordering, and smart recommendations. Resizing, compression, conversion, and folder generation should stay deterministic.",
   },
 ];
 
@@ -183,7 +261,7 @@ function Navbar() {
               SellerImages
             </p>
             <p className="text-xs font-medium text-slate-500">
-              Marketplace image packs
+              Image pack automation
             </p>
           </div>
         </a>
@@ -194,6 +272,9 @@ function Navbar() {
           </a>
           <a className="transition hover:text-sky-700" href="#features">
             Features
+          </a>
+          <a className="transition hover:text-sky-700" href="#tools">
+            Tools
           </a>
           <a className="transition hover:text-sky-700" href="#pricing">
             Pricing
@@ -225,148 +306,40 @@ function Navbar() {
 function Hero() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-sky-50 to-emerald-50">
-      <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 py-20 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-28">
-        <div>
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-sky-200 bg-white px-4 py-2 text-sm font-semibold text-sky-800 shadow-sm">
+      <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8 lg:py-20">
+        <div className="mx-auto max-w-4xl text-center">
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-sky-200 bg-white px-4 py-2 text-sm font-semibold text-sky-800 shadow-sm">
             <span className="h-2 w-2 rounded-full bg-emerald-500" />
-            Built for sellers, creators, and ecommerce teams
+            Built for sellers, creators, real estate, and business teams
           </div>
 
-          <h1 className="max-w-4xl text-4xl font-bold tracking-tight text-sky-950 sm:text-5xl lg:text-6xl">
-            Turn product photos into marketplace-ready image packs.
+          <h1 className="mx-auto max-w-4xl text-4xl font-bold tracking-tight text-sky-950 sm:text-5xl lg:text-6xl">
+            Turn images into ready-to-use image packs.
           </h1>
 
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-700">
-            SellerImages helps you check, fix, resize, crop, and export product
-            images for Amazon, Etsy, eBay, Shopify, and Google Shopping without
-            manually rebuilding the same files in different tools.
+          <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-slate-700">
+            Upload once, preview the outputs, and export clean image folders for
+            ecommerce listings, real estate listings, local business promos,
+            creator campaigns, websites, and ads.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <a
-              href="#upload"
-              className="inline-flex cursor-pointer items-center justify-center rounded-2xl bg-sky-600 px-6 py-4 text-base font-semibold text-white shadow-sm transition hover:bg-sky-700 focus:outline-none focus:ring-4 focus:ring-sky-200"
-            >
-              Check product images
-            </a>
-            <a
-              href="#workflow"
-              className="inline-flex cursor-pointer items-center justify-center rounded-2xl border border-slate-300 bg-white px-6 py-4 text-base font-semibold text-slate-800 shadow-sm transition hover:border-sky-300 hover:bg-sky-50"
-            >
-              See how it works
-            </a>
-          </div>
-
-          <div className="mt-8 flex flex-wrap gap-2">
-            {marketplaces.map((marketplace) => (
+          <div className="mt-7 flex flex-wrap justify-center gap-2">
+            {packTypes.map((packType) => (
               <span
-                key={marketplace}
+                key={packType}
                 className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 shadow-sm"
               >
-                {marketplace}
+                {packType}
               </span>
             ))}
           </div>
         </div>
 
-        <div
-          id="upload"
-          className="rounded-[2rem] border border-slate-200 bg-white p-4 shadow-xl"
-        >
-          <div className="rounded-[1.5rem] border border-dashed border-sky-300 bg-sky-50/70 p-6">
-            <div className="flex items-center justify-between gap-4">
-              <div>
-                <h2 className="text-xl font-bold text-sky-950">
-                  Image pack preview
-                </h2>
-                <p className="mt-1 text-sm text-slate-600">
-                  Example workflow for one product listing.
-                </p>
-              </div>
-              <span className="rounded-full bg-emerald-50 px-3 py-1 text-sm font-semibold text-emerald-700 ring-1 ring-emerald-200">
-                4 ready
-              </span>
-            </div>
-
-            <div className="mt-6 grid grid-cols-2 gap-3">
-              <div className="aspect-square rounded-2xl border border-slate-200 bg-white p-3 shadow-sm">
-                <div className="flex h-full items-center justify-center rounded-xl bg-gradient-to-br from-slate-100 to-slate-200 text-sm font-semibold text-slate-500">
-                  Main image
-                </div>
-              </div>
-              <div className="aspect-square rounded-2xl border border-slate-200 bg-white p-3 shadow-sm">
-                <div className="flex h-full items-center justify-center rounded-xl bg-gradient-to-br from-emerald-50 to-sky-100 text-sm font-semibold text-slate-500">
-                  Thumbnail
-                </div>
-              </div>
-              <div className="aspect-[4/3] rounded-2xl border border-slate-200 bg-white p-3 shadow-sm">
-                <div className="flex h-full items-center justify-center rounded-xl bg-gradient-to-br from-amber-50 to-slate-100 text-sm font-semibold text-slate-500">
-                  Etsy crop
-                </div>
-              </div>
-              <div className="aspect-[4/3] rounded-2xl border border-slate-200 bg-white p-3 shadow-sm">
-                <div className="flex h-full items-center justify-center rounded-xl bg-gradient-to-br from-sky-100 to-white text-sm font-semibold text-slate-500">
-                  Shopify web
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-6 space-y-3">
-              <StatusRow
-                label="Amazon main image"
-                status="Pass"
-                tone="success"
-              />
-              <StatusRow
-                label="Etsy thumbnail crop"
-                status="Review"
-                tone="warning"
-              />
-              <StatusRow
-                label="File size and format"
-                status="Pass"
-                tone="success"
-              />
-              <StatusRow
-                label="Background cleanup"
-                status="Fixed"
-                tone="success"
-              />
-            </div>
-
-            <button className="mt-6 w-full cursor-pointer rounded-2xl bg-sky-600 px-5 py-4 text-base font-semibold text-white transition hover:bg-sky-700 focus:outline-none focus:ring-4 focus:ring-sky-200">
-              Export marketplace ZIP
-            </button>
-          </div>
+        <div className="mt-10">
+          <ImagePackWorkflowUploader />
         </div>
       </div>
     </section>
-  );
-}
-
-function StatusRow({
-  label,
-  status,
-  tone,
-}: {
-  label: string;
-  status: string;
-  tone: "success" | "warning";
-}) {
-  const toneClass =
-    tone === "success"
-      ? "bg-emerald-50 text-emerald-700 ring-emerald-200"
-      : "bg-amber-50 text-amber-800 ring-amber-200";
-
-  return (
-    <div className="flex items-center justify-between rounded-2xl border border-slate-200 bg-white px-4 py-3">
-      <span className="text-sm font-medium text-slate-700">{label}</span>
-      <span
-        className={`rounded-full px-3 py-1 text-xs font-bold ring-1 ${toneClass}`}
-      >
-        {status}
-      </span>
-    </div>
   );
 }
 
@@ -396,8 +369,8 @@ function Workflow() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <SectionHeader
           eyebrow="Workflow"
-          title="A cleaner way to prepare seller images"
-          description="The goal is simple: upload once, catch issues early, and export files you can actually use."
+          title="A cleaner way to prepare business images"
+          description="The goal is simple: upload once, preview outputs, and export files that are ready to upload, send, save, publish, or hand off."
         />
 
         <div className="mt-12 grid gap-6 md:grid-cols-3">
@@ -427,8 +400,8 @@ function FeatureGrid() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <SectionHeader
           eyebrow="Features"
-          title="Built around seller workflow, not generic image editing"
-          description="Canva and Adobe are broad creative tools. SellerImages should focus on marketplace checks, batch fixes, and export-ready files."
+          title="Built around image packs, not generic editing"
+          description="Canva, Adobe, and social resizers are broad creative tools. SellerImages should focus on finished image deliverables, organized folders, and practical workflow speed."
         />
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -461,12 +434,12 @@ function PlatformExport() {
             Export packs
           </p>
           <h2 className="mt-4 text-3xl font-bold tracking-tight text-sky-950 sm:text-4xl">
-            Give sellers files they can upload immediately.
+            Give users files they can use immediately.
           </h2>
           <p className="mt-5 text-lg leading-8 text-slate-700">
             The strongest product value is not another editing canvas. It is an
-            organized output that saves sellers time and reduces upload
-            mistakes.
+            organized output that saves time and reduces upload, publishing, and
+            client handoff mistakes.
           </p>
         </div>
 
@@ -479,21 +452,85 @@ function PlatformExport() {
 
           <div className="space-y-3 font-mono text-sm leading-7 text-slate-300">
             <p className="text-sky-300">/sellerimages-export</p>
-            <p>├── amazon</p>
-            <p>│ ├── main-image.jpg</p>
-            <p>│ ├── detail-shot.jpg</p>
-            <p>│ └── lifestyle-image.jpg</p>
-            <p>├── etsy</p>
-            <p>│ ├── listing-photo-1.jpg</p>
-            <p>│ └── thumbnail-preview.jpg</p>
-            <p>├── ebay</p>
-            <p>│ └── gallery-image.jpg</p>
-            <p>├── shopify</p>
-            <p>│ ├── product-main.webp</p>
-            <p>│ └── collection-thumb.webp</p>
-            <p>└── google-shopping</p>
-            <p> └── feed-image.jpg</p>
+            <p>├── ecommerce</p>
+            <p>│ ├── amazon-main.jpg</p>
+            <p>│ ├── etsy-listing-photo.jpg</p>
+            <p>│ └── shopify-product.webp</p>
+            <p>├── real-estate</p>
+            <p>│ ├── listing-gallery.jpg</p>
+            <p>│ ├── website-hero.webp</p>
+            <p>│ └── open-house-story.jpg</p>
+            <p>├── campaign</p>
+            <p>│ ├── instagram-square.jpg</p>
+            <p>│ ├── youtube-thumbnail.jpg</p>
+            <p>│ └── facebook-ad.jpg</p>
+            <p>└── image-pack-report.pdf</p>
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ToolsSection() {
+  return (
+    <section id="tools" className="bg-slate-50 py-20">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <SectionHeader
+          eyebrow="Secondary tools"
+          title="Useful individual tools when users do not need a full pack"
+          description="Standalone tools can help with SEO and quick tasks, but they should support the main workflow instead of replacing it."
+        />
+
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {tools.map((tool) => (
+            <article
+              key={tool.title}
+              className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition hover:border-sky-200"
+            >
+              <div className="mb-5 h-11 w-11 rounded-2xl bg-gradient-to-br from-sky-100 to-emerald-100 ring-1 ring-sky-100" />
+              <h3 className="text-lg font-bold text-sky-950">{tool.title}</h3>
+              <p className="mt-3 leading-7 text-slate-600">
+                {tool.description}
+              </p>
+              <a
+                href="#upload"
+                className="mt-5 inline-flex cursor-pointer text-sm font-bold text-sky-700 transition hover:text-sky-900"
+              >
+                Try tool
+              </a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function UseCases() {
+  return (
+    <section className="bg-white py-20">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <SectionHeader
+          eyebrow="Use cases"
+          title="Made for people who need finished image deliverables"
+          description="The best users are not just editing images for fun. They need files that are ready to upload, publish, save, send, or hand off."
+        />
+
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+          {useCases.map((useCase) => (
+            <article
+              key={useCase.title}
+              className="rounded-3xl border border-slate-200 bg-slate-50 p-6"
+            >
+              <h3 className="text-lg font-bold text-sky-950">
+                {useCase.title}
+              </h3>
+              <p className="mt-3 text-sm leading-6 text-slate-600">
+                {useCase.description}
+              </p>
+            </article>
+          ))}
         </div>
       </div>
     </section>
@@ -506,8 +543,8 @@ function PricingPreview() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <SectionHeader
           eyebrow="Pricing"
-          title="Simple pricing for sellers and small teams"
-          description="Use one-time exports for casual sellers and subscriptions for sellers, VAs, freelancers, and agencies that process images repeatedly."
+          title="Simple pricing for sellers, creators, and small teams"
+          description="Use free tools for acquisition, affordable image pack exports for regular users, and agency tiers for repeated client work."
         />
 
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
@@ -577,8 +614,8 @@ function FAQ() {
       <div className="mx-auto max-w-4xl px-6 lg:px-8">
         <SectionHeader
           eyebrow="FAQ"
-          title="Questions sellers will ask before trusting the workflow"
-          description="Keep the messaging direct. The product should feel practical, credible, and specific."
+          title="Questions users will ask before trusting the workflow"
+          description="The product should feel practical, credible, and specific."
         />
 
         <div className="mt-10 divide-y divide-slate-200 rounded-3xl border border-slate-200 bg-white">
@@ -606,11 +643,11 @@ function FinalCTA() {
     <section className="bg-sky-950 py-20">
       <div className="mx-auto max-w-4xl px-6 text-center lg:px-8">
         <h2 className="text-3xl font-bold tracking-tight text-sky-100 sm:text-4xl">
-          Prepare product images without guessing marketplace rules.
+          Stop rebuilding the same image files for every platform.
         </h2>
         <p className="mt-5 text-lg leading-8 text-sky-100/80">
-          Check images, fix common issues, and export clean marketplace folders
-          for your next listing launch.
+          Upload an image set, choose a workflow, and export clean image folders
+          for listings, campaigns, websites, ads, and client handoff.
         </p>
         <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
           <a
@@ -634,7 +671,7 @@ function FinalCTA() {
 function Footer() {
   return (
     <footer className="border-t border-slate-200 bg-white">
-      <div className="mx-auto grid max-w-7xl gap-8 px-6 py-10 md:grid-cols-[1.2fr_0.8fr_0.8fr] lg:px-8">
+      <div className="mx-auto grid max-w-7xl gap-8 px-6 py-10 md:grid-cols-[1.2fr_0.8fr_0.8fr_0.8fr] lg:px-8">
         <div>
           <div className="flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-sky-600 text-sm font-bold text-white">
@@ -642,48 +679,40 @@ function Footer() {
             </div>
             <div>
               <p className="font-bold text-sky-950">SellerImages</p>
-              <p className="text-sm text-slate-500">Marketplace image packs</p>
+              <p className="text-sm text-slate-500">Image pack automation</p>
             </div>
           </div>
           <p className="mt-4 max-w-md text-sm leading-6 text-slate-600">
-            A seller-focused image workflow for checking, fixing, resizing, and
-            exporting product images for major marketplaces.
+            A workflow-first image platform for sellers, real estate teams,
+            local businesses, creators, freelancers, and agencies that need
+            upload-ready files.
           </p>
         </div>
 
-        <div>
-          <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-sky-700">
-            Product
-          </h2>
-          <div className="mt-4 space-y-3 text-sm text-slate-600">
-            <a className="block transition hover:text-sky-700" href="#workflow">
-              Workflow
-            </a>
-            <a className="block transition hover:text-sky-700" href="#features">
-              Features
-            </a>
-            <a className="block transition hover:text-sky-700" href="#pricing">
-              Pricing
-            </a>
-          </div>
-        </div>
+        <FooterColumn
+          title="Workflows"
+          links={[
+            "Ecommerce packs",
+            "Real estate packs",
+            "Local business packs",
+            "Creator campaign packs",
+          ]}
+        />
 
-        <div>
-          <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-sky-700">
-            Tools
-          </h2>
-          <div className="mt-4 space-y-3 text-sm text-slate-600">
-            <a className="block transition hover:text-sky-700" href="#upload">
-              Amazon image checker
-            </a>
-            <a className="block transition hover:text-sky-700" href="#upload">
-              Etsy thumbnail preview
-            </a>
-            <a className="block transition hover:text-sky-700" href="#upload">
-              Product image pack generator
-            </a>
-          </div>
-        </div>
+        <FooterColumn
+          title="Tools"
+          links={[
+            "Image Resizer",
+            "Image Compressor",
+            "Image Converter",
+            "Thumbnail Preview",
+          ]}
+        />
+
+        <FooterColumn
+          title="Product"
+          links={["Workflow", "Features", "Pricing", "FAQ"]}
+        />
       </div>
 
       <div className="border-t border-slate-200 px-6 py-6">
@@ -692,6 +721,27 @@ function Footer() {
         </p>
       </div>
     </footer>
+  );
+}
+
+function FooterColumn({ title, links }: { title: string; links: string[] }) {
+  return (
+    <div>
+      <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-sky-700">
+        {title}
+      </h2>
+      <div className="mt-4 space-y-3 text-sm text-slate-600">
+        {links.map((link) => (
+          <a
+            key={link}
+            className="block transition hover:text-sky-700"
+            href="#upload"
+          >
+            {link}
+          </a>
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -726,7 +776,7 @@ function JsonLd() {
     operatingSystem: "Web",
     url: "https://www.sellerimages.com",
     description:
-      "SellerImages helps ecommerce sellers check, fix, resize, and export marketplace-ready product image packs.",
+      "SellerImages helps users upload images once and export organized image packs for ecommerce listings, real estate listings, local business promotions, creator campaigns, websites, and ads.",
     offers: {
       "@type": "Offer",
       price: "0",
@@ -735,7 +785,7 @@ function JsonLd() {
     audience: {
       "@type": "Audience",
       audienceType:
-        "Amazon sellers, Etsy shop owners, eBay sellers, Shopify merchants, ecommerce freelancers, and marketplace agencies",
+        "Ecommerce sellers, real estate agents, property managers, local businesses, creators, freelancers, virtual assistants, and agencies",
     },
   };
 
@@ -762,6 +812,8 @@ export default function Home() {
           <Workflow />
           <FeatureGrid />
           <PlatformExport />
+          <ToolsSection />
+          <UseCases />
           <PricingPreview />
           <FAQ />
           <FinalCTA />
