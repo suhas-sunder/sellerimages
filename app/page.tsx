@@ -513,8 +513,8 @@ function UseCases() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <SectionHeader
           eyebrow="Use cases"
-          title="Made for people who need finished image deliverables"
-          description="The best users are not just editing images for fun. They need files that are ready to upload, publish, save, send, or hand off."
+          title="Made for people who need automated solutions for finished image deliverables"
+          description="Having to process every image individually and creating workflows around it can be costly and time-consuming. SellerImages makes it simple to upload once, preview outputs, and export files that are ready to upload, publish, save, send, or hand off."
         />
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
